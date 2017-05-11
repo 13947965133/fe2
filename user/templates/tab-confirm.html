@@ -74,8 +74,12 @@
           $(this).css("background-color","#FEB252");
           $(this).css("border","1px solid #FEB252");
           if(confirm("订单已发送到商家,是否确认关闭页面")){
-            window.close()
-            window.location="#/tab/home";
+            // window.close();
+            setTimeout(function(){},500);
+            window.location="http://localhost/fe2/user/#/tab/home?sid=15147947988";
+            window.location.reload();
+            window.location="http://localhost/fe2/user/#/tab/home?sid=15771337132";
+            window.location.reload();
            }
         });
         </script>

@@ -1,10 +1,10 @@
 var zhuohao;
+var w2 = location.href.split("?");
+var w3 = w2[1];
+var w4 = w3.split("=");
 angular.module('starter.controllers', ['ngStorage','ngAnimate'])
 	//首页
 .controller('HomeCtrl', function ($scope,$http,$rootScope, $ionicScrollDelegate, $sessionStorage,$interval,$state,$animate) {
-	var w2 = location.href.split("?");
-	var w3 = w2[1];
-	var w4 = w3.split("=");
 	if (w4[0] == 'sid') {
 		usesid = w4[1];
 	}
@@ -123,7 +123,7 @@ angular.module('starter.controllers', ['ngStorage','ngAnimate'])
 			params: {
 				data:{
 					sid: '15771337133',
-					zid:zhuohao,
+					zid:'993',
 					list: $rootScope.shopping,
 					sum: $rootScope.zongjia,
 					renshu: $rootScope.personNum,
@@ -139,6 +139,8 @@ angular.module('starter.controllers', ['ngStorage','ngAnimate'])
 				socket.emit('listmessage',{ sid :'13947965133',list:$rootScope.shopping});
 				// setTimeout(function(){window.location = '#/tab/home';},1);
 				console.log("提交成功!");
+				$rootScope.zongjia = 0;
+				$rootScope.personNum = 0;
 			}
 		});
 	}

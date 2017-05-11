@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>接受用户端请求工具</title>
+	<script src="http://realtime.plhwin.com/socket.io/socket.io.js"></script>
+	<!-- <script src="/socket.io/socket.io.js"></script> -->
+	<!-- <script src="js/socket.io.js" charset="utf-8"></script> -->
+<script>
+	var data4 ;
+	function readclientmessage1(){
+		var socket = io('ws://imnu.online:8888');
+		socket.on('sid_13947965133', function (data) {
+    		console.log(data.zid);
+				data4 = data;
+    		// socket.emit('my other event', { my: 'data' });
+  		});
+	}
+
+	readclientmessage1();
+</script>
+</head>
+<body>
+	<p id="content"></p>
+</body>
+</html>
