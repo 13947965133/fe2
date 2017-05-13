@@ -1,15 +1,28 @@
-var zhuohao;
-var w2 = location.href.split("?");
-var w3 = w2[1];
-var w4 = w3.split("=");
+var sname ='未选择店家';
+var zhuohao = "未选择桌号";
+var ab = location.href.split("?");
+var ws3 = ab[1].split('&');
+for (var i = 0; i < ws3.length; i++) {
+	ws4 = ws3[i].split('=');
+	switch (ws4[0]) {
+		case 'sid':
+			usesid = ws4[1];
+			break;
+		case 'sname':
+			sname = ws4[1];
+			break;
+		case 'zid':
+			zhuohao = ws4[1];
+			break;
+		default:
+			console.log("url is orrer");
+
+	}
+}
 angular.module('starter.controllers', ['ngStorage','ngAnimate'])
 	//首页
 .controller('HomeCtrl', function ($scope,$http,$rootScope, $ionicScrollDelegate, $sessionStorage,$interval,$state,$animate) {
-	if (w4[0] == 'sid') {
-		usesid = w4[1];
-	}
-	document.title="hello2";
-	zhuohao = 24;
+	document.title= decodeURI(sname)+":"+zhuohao+"号桌";
 	$http({
 		url:"app_data/"+usesid+".json",
 		method:"get"
@@ -105,6 +118,7 @@ angular.module('starter.controllers', ['ngStorage','ngAnimate'])
 	};
 })
 .controller('ConfirmCtrl',function($scope,$rootScope,$http){
+	$scope.beizhu = "订单备注为空";
 	$rootScope.personNum = 2;
 	$scope.back = function(){
 		window.location = '#/tab/home';
@@ -122,25 +136,23 @@ angular.module('starter.controllers', ['ngStorage','ngAnimate'])
 			method: 'post',
 			params: {
 				data:{
-					sid: '15771337133',
-					zid:'993',
+					sid: usesid,
+					zid:zhuohao,
 					list: $rootScope.shopping,
 					sum: $rootScope.zongjia,
 					renshu: $rootScope.personNum,
 					zhifu: "已付款",
-					fapiao: true,
-					beizhu: ''
+					fapiao: false,
+					bz: $scope.beizhu
 				}
 			}
 		}).success(function(data){
 			if(data){
 				//websocket
 				var socket = io('ws://www.imnu.online:8888');
-				socket.emit('listmessage',{ sid :'13947965133',list:$rootScope.shopping});
+				socket.emit('listmessage',{ sid :usesid,zid:zhuohao,list:$rootScope.shopping,bz:$scope.beizhu});
 				// setTimeout(function(){window.location = '#/tab/home';},1);
 				console.log("提交成功!");
-				$rootScope.zongjia = 0;
-				$rootScope.personNum = 0;
 			}
 		});
 	}
