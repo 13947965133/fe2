@@ -12,7 +12,7 @@
                 top: $(".ion-ios-cart").offset().top + 10, //抛物体终点纵坐标
             },
             onEnd: function() {
-                $(".shopping").show().animate({width: '200px'},300).fadeOut(500);////成功加入购物车动画效果
+                $(".shopping").show().animate({width: '200px'},300).fadeOut(1000);////成功加入购物车动画效果
                 $("body").children("img.flyer-img").fadeOut("4000");
                 setTimeout(function(){$("body").children("img.flyer-img").remove();},3000);
                 // this.destory(); //销毁抛物体

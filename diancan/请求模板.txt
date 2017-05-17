@@ -1,0 +1,36 @@
+scerpt   75bd1c65b44f8c83be2e98481bd25c15
+id       wx2a946bc6cf99afbf
+opid oYHgzvzgNLXBib5EmZhLNdBsiBRw
+template_id  ehiNBw8ydQ48FteRcgG8EVaZLVtB3mvmxYkQNCIlSEk
+
+    {
+           "touser":"oYHgzvzgNLXBib5EmZhLNdBsiBRw",
+           "template_id":"ehiNBw8ydQ48FteRcgG8EVaZLVtB3mvmxYkQNCIlSEk",
+           "url":"http://weixin.qq.com/download",  
+           "miniprogram":{
+             "appid":"xiaochengxuappid12345",
+             "pagepath":"index?foo=bar"
+           },          
+           "data":{
+                   "first": {
+                       "value":"dfnj",
+                       "color":"#173177"
+                   },
+                   "keynote1":{
+                       "value":"sfm",
+                       "color":"#173177"
+                   },
+                   "keynote2": {
+                       "value":"rtrg",
+                       "color":"#173177"
+                   },
+                   "keynote3": {
+                       "value":"ertfg",
+                       "color":"#173177"
+                   },
+                   "remark":{
+                       "value":"gsg",
+                       "color":"#173177"
+                   }
+           }
+       }

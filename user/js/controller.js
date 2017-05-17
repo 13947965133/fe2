@@ -1,6 +1,7 @@
 var sname ='未选择店家';
 var zhuohao = "未选择桌号";
 var ab = location.href.split("?");
+$.cookie('dizhi', ab[1],{ expires: 7, path: '/' });
 var ws3 = ab[1].split('&');
 for (var i = 0; i < ws3.length; i++) {
 	ws4 = ws3[i].split('=');
@@ -131,30 +132,36 @@ angular.module('starter.controllers', ['ngStorage','ngAnimate'])
 	}
 	//var data
 	$scope.tijiao = function(){
-		$http({
-			url: 'http://imnu.online:8000/receivedlist',
-			method: 'post',
-			params: {
-				data:{
-					sid: usesid,
-					zid:zhuohao,
-					list: $rootScope.shopping,
-					sum: $rootScope.zongjia,
-					renshu: $rootScope.personNum,
-					zhifu: "已付款",
-					fapiao: false,
-					bz: $scope.beizhu
-				}
-			}
-		}).success(function(data){
-			if(data){
-				//websocket
-				var socket = io('ws://www.imnu.online:8888');
-				socket.emit('listmessage',{ sid :usesid,zid:zhuohao,list:$rootScope.shopping,bz:$scope.beizhu});
-				// setTimeout(function(){window.location = '#/tab/home';},1);
-				console.log("提交成功!");
-			}
-		});
+		$.post("ding.php",
+    {
+			Name:decodeURI(sname),
+			sid: usesid,
+			zid:zhuohao,
+			list:JSON.stringify($rootScope.shopping),
+			sum: $rootScope.zongjia,
+			renshu: $rootScope.personNum,
+			zhifu: "现金支付",
+			bz: $scope.beizhu
+    },
+        function(data,status){
+					if (data ==1){
+						$("#tijiaor").text("已下单");
+						$("#tijiaor").attr("disabled",true);
+						$("#tijiaor").css("background-color","#FEB252");
+						$("#tijiaor").css("border","1px solid #FEB252");
+						if(confirm("订单已发送到商家,是否确认关闭页面")){
+							var tdizhi = $.cookie('dizhi');
+							window.location="http://www.imnu.online/fe2/user/#/tab/home?"+tdizhi;
+							window.location.reload();
+						 }
+					}else {
+						alert("网络错误,请重新下单");
+						var tdizhi = $.cookie('dizhi');
+						window.location="http://www.imnu.online/fe2/user/#/tab/home?"+tdizhi;
+						window.location.reload();
+					}
+    });
+
 	}
 })
 	//获取每一个list的位置

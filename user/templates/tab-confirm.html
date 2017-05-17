@@ -55,9 +55,9 @@
                         <i class="radio-icon assertive ion-checkmark"></i>
                     </div>
                 </label>
-                <label class="item item-input">
+                <!-- <label class="item item-input">
                     <textarea placeholder="订单备注" ng-model="beizhu"></textarea>
-                </label>
+                </label> -->
 
 
             </ul>
@@ -66,23 +66,6 @@
     </ion-content>
     <div class="footer" style="z-index: 999;background-color:#2B2C2D;">
         <h3 class="zongjia" style="color:#BCBDBE;">￥{{zongjia}}</h3>
-        <script type="text/javascript">
-        $("#tijiaor").click(function(){
-          // $(this).hide();
-          $(this).text("已下单");
-          $(this).attr("disabled",true);
-          $(this).css("background-color","#FEB252");
-          $(this).css("border","1px solid #FEB252");
-          if(confirm("订单已发送到商家,是否确认关闭页面")){
-            // window.close();
-            setTimeout(function(){},500);
-            window.location="http://localhost/fe2/user/#/tab/home?sid=15147947988";
-            window.location.reload();
-            window.location="http://localhost/fe2/user/#/tab/home?"+ab[1];
-            window.location.reload();
-           }
-        });
-        </script>
         <div class="jiesuan" id="tijiaor" ng-click="tijiao()">提交订单</div>
     </div>
 </ion-view>

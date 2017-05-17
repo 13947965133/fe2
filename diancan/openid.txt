@@ -1,0 +1,8 @@
+        "openid": [
+            "oYHgzvx1B70Lb7ObCVBQdH7nlqdg", 
+            "oYHgzv_fy1sbo0IdkQcmdlXDFRmc", 
+            "oYHgzv42iDfPGUOi-3UFo03HBIHs" => "吴军",   
+            "oYHgzv3RRThai4fnimcyEf0x5Kow" => "白鹤鹏", 
+            "oYHgzvwon7Vz-Wd7_olojDNKdxZs", 
+            "oYHgzvzgNLXBib5EmZhLNdBsiBRw", 
+            "oYHgzv4pw63BN5v2FX1byDGvMG9A" =>"郭晗"
